@@ -1,0 +1,118 @@
+@use '../../styles/variables' as *;
+
+.specsWrapper {
+  position: relative;
+  margin-top: 16px;
+}
+
+.specs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 5px 4px 9px;
+  border-radius: 100px;
+  background: #FFEDF8CC;
+  color: $color-text-dark;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 140%;
+  white-space: nowrap;
+}
+
+.detailsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 1px solid $color-accent-pink;
+    outline-offset: 2px;
+  }
+}
+
+.detailsIcon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.detailsButton[aria-expanded='true'] {
+  .detailsIcon {
+    transform: rotate(90deg);
+  }
+}
+
+.detailsDropdown {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 100%;
+  margin: 0;
+  padding: 8px 6px;
+  border-radius: 10px;
+  background: #9A42E8;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+          opacity 180ms ease,
+          visibility 180ms ease,
+          transform 180ms ease;
+}
+
+.detailsDropdown[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.detailsRow {
+  display: grid;
+  grid-template-columns: minmax(0, 72px) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 22px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: linear-gradient(
+                  90.03deg,
+                  rgba(249, 240, 237, 0.3) -0.01%,
+                  rgba(204, 203, 211, 0.16) 53.84%,
+                  rgba(225, 220, 223, 0.3) 99.04%
+  );
+  color: $color-text-white;
+  font-size: 14px;
+  line-height: 113%;
+
+  & + & {
+    margin-top: 4px;
+  }
+
+  dt,
+  dd {
+    margin: 0;
+  }
+
+  dt {
+    color: #FFFFFFB2;
+  }
+
+  dd {
+    font-weight: 400;
+    letter-spacing: -4%;
+  }
+}

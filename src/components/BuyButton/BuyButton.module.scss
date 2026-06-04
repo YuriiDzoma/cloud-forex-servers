@@ -1,0 +1,23 @@
+@use '../../styles/variables' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid $color-accent-pink;
+  border-radius: $radius-buy-button;
+  background: transparent;
+  color: $color-accent-pink;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: all .3s ease;
+}
+
+.button:hover {
+  background-color: $background-card-header-active;
+  color: $color-text-white;
+}

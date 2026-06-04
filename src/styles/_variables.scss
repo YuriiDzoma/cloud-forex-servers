@@ -1,0 +1,97 @@
+// Layout
+$page-width: 1440px;
+
+// Typography
+$font-family-primary: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+// Main heading: "Buy Forex VPS plans"
+$font-heading-main-size: 54px;
+$font-heading-main-weight: 400;
+$font-heading-main-line-height: 54px;
+$font-heading-main-letter-spacing: -2.7px;
+
+
+// Colors
+
+// Text
+$color-text-primary: #ffedf8;
+$color-text-dark: #2a1c3c;
+$color-text-selector-active: #1E132D;
+$color-text-white: #ffffff;
+$color-text-legend: #FFF599;
+$color-text-card: #F1EBFE;
+
+// Accent
+$color-accent-pink: #ff4ab7;
+$color-accent-purple: #be4eff;
+
+// Borders
+$color-button-border: #ff4ab7;
+$color-selector-border: #99999933;
+$color-card-border: rgba(190, 78, 255, 0.5);
+
+
+// Backgrounds
+
+$background-page: radial-gradient(45.44% 58.3% at 50% 17.62%, #261433 0%, #160720 100%);
+$background-card: linear-gradient(92.6deg, rgba(190, 78, 255, 0.06) 37.84%, rgba(255, 74, 183, 0.06) 100%);
+$background-card-active: linear-gradient(92.6deg, rgba(190, 78, 255, 0.09) 37.84%, rgba(255, 74, 183, 0.09) 100%);
+$background-card-header: #432B54;
+$background-card-header-active: #C54092;
+$background-card-row: linear-gradient(90deg, rgba(83, 45, 114, 0.1) 0%, rgba(83, 45, 114, 0.26) 50%, rgba(83, 45, 114, 0.1) 100%);
+$background-selector-active: linear-gradient(86.53deg, #B3B6C8 0%, #FFFFFF 100%);
+$background-dropdown: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%);
+
+
+// Border radius
+
+$radius-tariff-card: 32px;
+$radius-buy-button: 100px;
+$radius-tariff-header: 16.67px;
+$radius-card-header: 12px;
+$radius-selector-row: 10px;
+$radius-feature-row: 8px;
+$radius-terminal-row: 6px;
+$radius-tag: 4px;
+
+
+// CSS Custom Properties
+
+:root {
+  // Layout
+  --page-width: #{$page-width};
+
+  // Typography
+  --font-family-primary: #{$font-family-primary};
+
+  --font-heading-main-size: #{$font-heading-main-size};
+  --font-heading-main-weight: #{$font-heading-main-weight};
+  --font-heading-main-line-height: #{$font-heading-main-line-height};
+  --font-heading-main-letter-spacing: #{$font-heading-main-letter-spacing};
+
+  // Text colors
+  --color-text-primary: #{$color-text-primary};
+  --color-text-dark: #{$color-text-dark};
+  --color-text-white: #{$color-text-white};
+
+  // Accent colors
+  --color-accent-pink: #{$color-accent-pink};
+  --color-accent-purple: #{$color-accent-purple};
+
+  // Borders
+  --color-button-border: #{$color-button-border};
+  --color-card-border: #{$color-card-border};
+
+  // Backgrounds
+  --background-page: #{$background-page};
+  --background-card: #{$background-card};
+  --background-dropdown: #{$background-dropdown};
+
+  // Border radius
+  --radius-tariff-card: #{$radius-tariff-card};
+  --radius-buy-button: #{$radius-buy-button};
+  --radius-tariff-header: #{$radius-tariff-header};
+  --radius-feature-row: #{$radius-feature-row};
+  --radius-terminal-row: #{$radius-terminal-row};
+  --radius-tag: #{$radius-tag};
+}

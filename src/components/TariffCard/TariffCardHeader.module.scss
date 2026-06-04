@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+
+.header {
+  padding: 14px 12px;
+  border-radius: $radius-card-header;
+  background: var(--tariff-header-background);
+  transition: background 0.3s ease;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  color: $color-text-primary;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 113%;
+  letter-spacing: -0.04em;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 4px 0 0;
+  color: var(--tariff-price-color);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 113%;
+  letter-spacing: -0.04em;
+  transition: color 0.3s ease;
+}
+
+.period {
+  color: $color-text-primary;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.chartIcons {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  padding-top: 4px;
+}
+
+.chartIcon {
+  display: block;
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+}

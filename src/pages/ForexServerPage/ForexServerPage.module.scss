@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: 100vh;
+  padding: 163px 0;
+  background: $background-page;
+  color: $color-text-primary;
+
+  @media (max-width: 767px) {
+    padding: 40px 0;
+  }
+}
+
+.pricing {
+  width: min(100% - 32px, $page-width);
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 32px 0;
+  font-family: $font-family-primary;
+  font-size: $font-heading-main-size;
+  font-weight: $font-heading-main-weight;
+  line-height: $font-heading-main-line-height;
+  letter-spacing: $font-heading-main-letter-spacing;
+  color: $color-text-white;
+
+  @media (max-width: 460px) {
+    font-size: 36px;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status,
+.error {
+  margin-top: 24px;
+  color: $color-text-primary;
+}
+
+.error {
+  color: $color-accent-pink;
+}
+
+.tariffGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+
+  @media (max-width: 1399px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

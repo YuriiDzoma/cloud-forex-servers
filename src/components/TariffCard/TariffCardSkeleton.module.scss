@@ -1,0 +1,150 @@
+@use '../../styles/variables' as *;
+
+.skeletonCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  padding: 20px 16px;
+  border: 1px solid $color-card-border;
+  border-radius: $radius-tariff-card;
+  background: $background-card;
+  color: $color-text-primary;
+  box-shadow: 0 0 48px 0 #00000073;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+                    90deg,
+                    transparent 0%,
+                    rgba(255, 237, 248, 0.08) 50%,
+                    transparent 100%
+    );
+    content: '';
+    transform: translateX(-100%);
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+.skeletonHeader {
+  display: grid;
+  gap: 8px;
+  min-height: 86px;
+  padding: 14px 12px;
+  border-radius: $radius-card-header;
+  background: $background-card-header;
+}
+
+.skeletonLineLarge,
+.skeletonLineMedium,
+.skeletonLineSmall,
+.skeletonSpecs,
+.skeletonTerminals,
+.skeletonFeature,
+.skeletonActions div,
+.skeletonActions span,
+.skeletonTags span {
+  border-radius: 100px;
+  background: rgba(255, 237, 248, 0.12);
+}
+
+.skeletonLineLarge {
+  width: 65%;
+  height: 27px;
+}
+
+.skeletonLineMedium {
+  width: 45%;
+  height: 27px;
+}
+
+.skeletonLineSmall {
+  width: 38%;
+  height: 14px;
+}
+
+.skeletonSpecs {
+  width: 100%;
+  height: 27px;
+  margin-top: 8px;
+}
+
+.skeletonTerminals {
+  height: 40px;
+  margin-top: 22px;
+  border-radius: 8px;
+}
+
+.skeletonSection {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.skeletonFeature {
+  height: 34px;
+  border-radius: 8px;
+
+  @media (max-width: 1399px) {
+    height: 28px;
+  }
+}
+
+.skeletonTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  span {
+    width: 120px;
+    height: 23px;
+    border-radius: 4px;
+
+    &:nth-child(2) {
+      width: 90px;
+    }
+
+    &:nth-child(3) {
+      width: 140px;
+    }
+
+    &:nth-child(4) {
+      width: 110px;
+    }
+  }
+}
+
+.skeletonActions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px;
+  gap: 0;
+  margin-top: auto;
+  padding-top: 36px;
+
+  div {
+    height: 48px;
+  }
+
+  span {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonCard {
+    &::before {
+      animation: none;
+    }
+  }
+}

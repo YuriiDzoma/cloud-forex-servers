@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+
+.card {
+  --tariff-card-background: #{$background-card};
+  --tariff-header-background: #{$background-card-header};
+  --tariff-price-color: #{$color-accent-pink};
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  padding: 20px 16px;
+  border: 1px solid $color-card-border;
+  border-radius: $radius-tariff-card;
+  background: var(--tariff-card-background);
+  color: $color-text-primary;
+  box-shadow: 0 0 48px 0 #00000073;
+  transition: background 0.3s ease;
+
+  &:hover,
+  &:focus-within {
+    --tariff-card-background: #{$background-card-active};
+    --tariff-header-background: #{$background-card-header-active};
+    --tariff-price-color: #{$color-text-white};
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  z-index: 2;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: $color-accent-pink;
+  color: $color-text-white;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
