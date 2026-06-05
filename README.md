@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# Cloud Forex Servers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript implementation of the Cloud Forex Servers tariff block based on the provided Figma design.
 
-Currently, two official plugins are available:
+The project includes tariff cards, data center switching, purchase period switching, dynamic price updates, API integration, Forex tariff filtering, responsive SCSS styling, loading skeletons, and custom dropdown interactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Demo
 
-## React Compiler
+* GitHub repository: https://github.com/YuriiDzoma/cloud-forex-servers
+* Deploy: *to be added after Netlify deployment*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+* React
+* TypeScript
+* SCSS / SCSS Modules
+* Vite
+* ESLint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Fetches tariff data from the provided API.
+* Filters only Forex tariffs from the API response.
+* Supports data center switching.
+* Updates displayed tariffs based on the selected data center.
+* Supports purchase period switching.
+* Dynamically updates prices based on the selected period.
+* Buy button contains the unique tariff order ID in the URL.
+* Custom period dropdown matching the Figma design.
+* Custom tariff details dropdown.
+* Loading skeletons for better UX.
+* Memoized presentational components where appropriate.
+* Accessible states for dropdowns, buttons, loading and error states.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## API
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Tariffs are loaded from:
+
+```txt
+https://api.zomrodev.online/v1/api/proxy/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Request body:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+func: v2.instances.order.pricelist
+out: json
+lang: en
+page: 1
+page_size: 999
+datacenter: 12,17,19,21
 ```
+
+The original task example included data centers `12,17,19`. The Figma design also contains USA, so data center `21` was added to support the USA option.
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the project locally:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Run lint:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```txt
+src/
+  api/                  API requests
+  assets/               Icons and images
+  components/           UI components
+  constants/            Data centers, periods, static tariff content
+  hooks/                Custom React hooks
+  pages/                Page-level components
+  styles/               Global SCSS styles and variables
+  types/                TypeScript types
+  utils/                Data mapping, filtering and formatting helpers
+```
+
+## Notes
+
+Some data is received from the API: tariff ID, order ID, title, data center, prices, currency and technical details.
+
+Some marketing content is stored locally in configuration because it is part of the Figma design and is not fully provided by the API: feature lists, tags, terminal counts, best choice badge, and UI-specific text.
