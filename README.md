@@ -7,9 +7,9 @@ The project includes tariff cards, data center switching, purchase period switch
 ## Demo
 
 * GitHub repository: https://github.com/YuriiDzoma/cloud-forex-servers
-* Deploy: *to be added after Netlify deployment*
+* Deploy: https://cloud-forex-servers.netlify.app*
 
-## Tech Stack
+## Tech Stackgit add README.md AI_USAGE.md
 
 * React
 * TypeScript
