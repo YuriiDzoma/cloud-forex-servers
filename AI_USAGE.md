@@ -9,30 +9,26 @@ Tools used:
 * ChatGPT
 * Cursor
 
+AI was used as an assistant for planning, review, debugging, accessibility suggestions, documentation, and final pre-submission review. The final implementation decisions, Figma inspection, asset preparation, code adjustments, browser testing, GitHub setup, and Netlify deployment were completed manually.
+
 ## AI Models
 
 * ChatGPT model: GPT-5.5 Thinking
 * Cursor model: Composer 2.5 Fast
 
-If Cursor was using auto model selection during some interactions, this should be considered as Cursor automatic model selection.
-
 ## Cursor Plan and Usage
 
-Cursor plan: Free
+Cursor was used on the Free plan.
 
-Cursor usage analytics:
+Exact token and cost analytics were not available in my Cursor dashboard. I did not enable paid on-demand usage and did not add paid billing for this task.
 
-```txt
-Tokens used: not available / to be filled from Cursor dashboard if available
-Estimated cost: $0
-```
-
-I used Cursor on the free plan. If exact token and cost analytics are available in the Cursor dashboard, they should be added here before final submission. If not available, the final submitted value remains:
+Reported usage:
 
 ```txt
-Exact token/cost analytics were not available in my Cursor dashboard.
 Cursor plan: Free
-Estimated cost: $0
+Cursor model: Composer 2.5 Fast
+Tokens used: not available in dashboard
+Paid cost: $0
 ```
 
 ## AI Prompts Used
@@ -119,6 +115,16 @@ Explain why aria-hidden warning appears when closing a custom dropdown and how t
 Explain why CSS color/stroke does not change an SVG loaded through img and how to make the icon white on hover.
 ```
 
+```txt
+Help me debug why the Netlify deployment failed with build script returned non-zero exit code 2.
+```
+
+### Final pre-submission review
+
+```txt
+Review this React + TypeScript + SCSS test task before final submission. Check for obvious bugs, accessibility issues, unnecessary code, build/deploy risks, and whether the implementation satisfies the requirements. Do not edit files automatically; provide review comments only.
+```
+
 ### Documentation and submission
 
 ```txt
@@ -127,49 +133,39 @@ Help me prepare README.md and AI_USAGE.md for the final test task submission. In
 
 ## Implementation Flow
 
-1. Created the project using Vite with the React + TypeScript template.
-2. Installed SCSS support.
-3. Created the initial project structure:
+I started by reviewing the task requirements and the Figma design to understand the required UI states, data flow, and interactions. After that, I created a Vite project with React and TypeScript, installed SCSS support, and planned the project structure before implementing the UI.
 
-    * API layer
-    * components
-    * constants
-    * hooks
-    * pages
-    * styles
-    * types
-    * utils
-4. Added SCSS variables based on the Figma design.
-5. Implemented the main Forex Server page layout.
-6. Implemented the data center selector.
-7. Implemented a custom purchase period dropdown.
-8. Connected the API and inspected the response structure.
-9. Added TypeScript types for the API response.
-10. Filtered only Forex tariffs.
-11. Created a mapper from API DTO to UI tariff model.
-12. Added local static content for design-specific tariff information that was not available from the API.
-13. Implemented tariff cards according to the Figma design.
-14. Added real icons from the design assets.
-15. Added loading skeletons for better UX.
-16. Added tariff details dropdown.
-17. Added memoization for presentational components where it made sense.
-18. Tested data center switching and dynamic price updates.
-19. Ran production build and lint checks.
-20. Pushed the project to GitHub.
+The project structure was separated into API, components, constants, hooks, pages, styles, types, and utils. This helped keep the code organized and avoid mixing API logic, UI rendering, and data transformation in one place.
+
+First, I created the basic page layout and SCSS variables based on the known Figma colors, gradients, borders, and border-radius values. Then I implemented the data center selector and the custom purchase period dropdown. I decided not to use a native select because the design required a custom dropdown state that should look the same across browsers.
+
+After the base UI was ready, I connected the API and inspected the response structure in the browser. Since the API returns more tariffs than needed, I added filtering for Forex tariffs only. I also created TypeScript types for the API response and a mapper that converts raw API DTOs into a cleaner UI model.
+
+API data is used for tariff IDs, order IDs, prices, currency, data center, and technical details. Design-specific marketing content, such as feature lists, tags, terminal counts, monitoring icon counts, and the “Best choice” badge, was stored locally because it was not fully available from the API response.
+
+Then I implemented the tariff cards according to the Figma design: card layout, header, price, specs, terminal row, features, tags, buy button, cart button, hover states, real SVG icons, and the tariff details dropdown. I also added loading skeletons to improve the user experience while API data is loading.
+
+After the main functionality was implemented, I reviewed rendering behavior and added memoization only where it made sense for presentational components. I also checked accessibility-related details such as button states, dropdown states, Escape closing, click outside handling, loading text, and error state.
+
+Before submission, I ran a final AI-assisted review in Cursor. Based on that review, I fixed the dynamic price suffix, updated React keys for tariff cards, improved focus-visible behavior, finalized README and AI usage documentation, and verified that the project builds successfully.
+
+Finally, I pushed the project to GitHub and deployed it to Netlify.
 
 ## What AI Helped With
 
 AI helped with:
 
 * Planning the project structure.
-* Suggesting component decomposition.
-* Creating TypeScript interfaces.
-* Designing API mapping logic.
+* Reviewing component decomposition.
+* Creating and improving TypeScript interfaces.
+* Designing the API mapping logic.
 * Explaining React rendering behavior.
-* Improving custom dropdown accessibility.
-* Suggesting SCSS structure.
-* Debugging TypeScript and accessibility issues.
-* Preparing documentation.
+* Suggesting UX and accessibility improvements.
+* Improving custom dropdown behavior.
+* Debugging TypeScript issues.
+* Debugging Netlify deployment issues.
+* Reviewing the project before final submission.
+* Preparing README and AI usage documentation.
 
 ## What Was Done Manually
 
@@ -184,16 +180,20 @@ Manually completed:
 * Testing interactions in the browser.
 * Running build and lint commands.
 * Creating the GitHub repository.
-* Pushing the final code.
+* Pushing the code to GitHub.
+* Deploying the project to Netlify.
+* Verifying the deployed version.
 
 ## Difficulties and Decisions
 
 * The API returns more tariffs than required, so only Forex tariffs were filtered.
 * Some visual card content from the Figma design was not available from the API, so it was stored in a local static configuration.
 * The Figma design includes USA as a data center, while the example API request included only `12,17,19`. Data center `21` was added to support the USA option.
-* The custom dropdown needed additional handling for click outside, Escape key, focus behavior, and accessibility warnings.
+* The custom dropdown needed additional handling for click outside, Escape key, focus behavior, and accessibility.
 * SVG icons loaded through `img` cannot be recolored with `stroke` or `color`, so hover styling was handled with CSS filter where needed.
 * React StrictMode caused one development API request to appear as canceled, which is expected behavior in development mode.
+* Netlify initially failed during deployment because a file change was not fully committed/fixed. After correcting the issue and pushing the update, deployment succeeded.
+* The price suffix had to be derived from the selected purchase period instead of being hardcoded as `month`.
 
 ## Validation
 
@@ -203,3 +203,5 @@ Before submission, the following commands were successfully run:
 npm run build
 npm run lint
 ```
+
+The final version was also deployed to Netlify and manually checked in the browser.

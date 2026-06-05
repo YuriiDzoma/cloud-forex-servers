@@ -86,7 +86,7 @@ export function ForexServerPage() {
                     <div className={styles.tariffGrid}>
                         {visibleTariffs.map((tariff) => (
                             <TariffCard
-                                key={tariff.sortOrder}
+                                key={tariff.id}
                                 tariff={tariff}
                                 selectedPeriodId={selectedPeriodId}
                             />

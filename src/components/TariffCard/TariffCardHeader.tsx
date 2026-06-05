@@ -1,12 +1,14 @@
 import { memo } from 'react';
 
-import type { PurchasePeriodId } from '../../constants/purchasePeriods';
 import type { TariffDetailRow, TariffPriceMap } from '../../types/tariff';
 import { formatPrice } from '../../utils/formatPrice';
 import { getMonitoringIconByCount } from './monitoringIcons';
 import { TariffDetailsDropdown } from './TariffDetailsDropdown';
 import styles from './TariffCardHeader.module.scss';
-
+import {
+    PURCHASE_PERIODS,
+    type PurchasePeriodId,
+} from '../../constants/purchasePeriods';
 interface TariffCardHeaderProps {
     title: string;
     currency: string;
@@ -29,6 +31,12 @@ export const TariffCardHeader = memo(function TariffCardHeader({
     const price = priceByPeriod[selectedPeriodId] ?? null;
     const monitoringIcon = getMonitoringIconByCount(chartIconCount);
 
+    const selectedPeriod = PURCHASE_PERIODS.find(
+        (period) => period.id === selectedPeriodId,
+    );
+
+    const priceSuffix = selectedPeriod?.priceSuffix ?? 'month';
+
     return (
         <header className={styles.header}>
             <div className={styles.headerContent}>
@@ -37,7 +45,7 @@ export const TariffCardHeader = memo(function TariffCardHeader({
 
                     <p className={styles.price}>
                         {price !== null ? formatPrice(price, currency) : '—'}
-                        <span className={styles.period}>month</span>
+                        <span className={styles.period}>{priceSuffix}</span>
                     </p>
                 </div>
 
